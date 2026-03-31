@@ -2,3 +2,370 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>My Portfolio Baraa Khaled G7</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #030303;
+      font-family: 'Inter', sans-serif;
+      color: #ececec;
+      line-height: 1.45;
+      overflow-x: hidden;
+    }
+
+    .frame {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 2rem 1.8rem;
+    }
+
+    .border-light {
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba(8, 8, 10, 0.65);
+      transition: border 0.2s ease, background 0.2s ease, transform 0.2s ease;
+    }
+
+    .border-light:hover {
+      border-color: rgba(255, 255, 255, 0.28);
+      background: rgba(18, 18, 22, 0.8);
+      transform: translateY(-2px);
+    }
+
+    header {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.8rem 0 1.2rem 0;
+      margin-bottom: 2rem;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      opacity: 0;
+      animation: fadeSlideUp 0.6s ease forwards;
+      animation-delay: 1.8s;
+    }
+
+    .signature {
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      background: linear-gradient(120deg, #f0f0f0, #aeaeae);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-decoration: none;
+    }
+    .signature small {
+      font-size: 1rem;
+      font-weight: 450;
+      background: none;
+      color: #b4b4b4;
+      -webkit-background-clip: unset;
+      background-clip: unset;
+    }
+
+    .hero {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 2.2rem;
+      margin: 1.5rem 0 4rem 0;
+    }
+    .hero-text {
+      flex: 1.2;
+    }
+    .hero-text h1 {
+      font-size: 4rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      margin-bottom: 1.5rem;
+      min-height: auto;
+      background: linear-gradient(145deg, #ffffff, #b9b9b9);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .typewriter-line {
+      display: block;
+      overflow: hidden;
+      white-space: nowrap;
+      width: 0;
+      animation: typing 1.2s steps(20, end) forwards;
+    }
+    .hero-text p {
+      font-size: 1rem;
+      color: #bcbcbc;
+      max-width: 580px;
+      margin-bottom: 1.2rem;
+      line-height: 1.5;
+      opacity: 0;
+      animation: fadeSlideUp 0.6s ease forwards;
+      animation-delay: 2.2s;
+    }
+    .hero-text .note {
+      font-size: 0.9rem;
+      color: #9a9a9a;
+      border-left: 2px solid rgba(255,255,255,0.25);
+      padding-left: 1rem;
+      margin: 1rem 0 1.8rem 0;
+      opacity: 0;
+      animation: fadeSlideUp 0.6s ease forwards;
+      animation-delay: 2.5s;
+    }
+    .stats-group {
+      display: flex;
+      gap: 1.8rem;
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: fadeSlideUp 0.6s ease forwards;
+      animation-delay: 2.8s;
+    }
+    .stat-block {
+      border: 1px solid rgba(255,255,255,0.1);
+      padding: 0.7rem 1.2rem;
+      background: rgba(0,0,0,0.45);
+      min-width: 100px;
+      text-align: center;
+    }
+    .stat-number {
+      font-size: 1.7rem;
+      font-weight: 700;
+      display: block;
+    }
+    .stat-label {
+      font-size: 0.75rem;
+      text-transform: lowercase;
+      letter-spacing: 0.5px;
+      color: #a0a0a0;
+    }
+    .hero-visual {
+      flex: 0.8;
+      display: flex;
+      justify-content: center;
+      opacity: 0;
+      animation: fadeScale 0.7s ease forwards;
+      animation-delay: 1.5s;
+    }
+    .avatar-frame {
+      width: 220px;
+      height: 220px;
+      border-radius: 28px;
+      border: 1px solid rgba(255,255,255,0.2);
+      background: #0c0c0e;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 5rem;
+      font-weight: 500;
+      color: #ddd;
+      box-shadow: 0 20px 30px -15px rgba(0,0,0,0.5);
+    }
+
+    .section-label {
+      display: inline-block;
+      font-size: 0.75rem;
+      text-transform: lowercase;
+      letter-spacing: 1px;
+      padding: 0.3rem 1rem;
+      border: 1px solid rgba(255,255,255,0.2);
+      margin-bottom: 1.5rem;
+      background: rgba(0,0,0,0.4);
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.8rem;
+      margin: 2rem 0 3rem 0;
+    }
+    .project-tile {
+      border: 1px solid rgba(255,255,255,0.1);
+      background: rgba(10,10,12,0.7);
+      padding: 1.4rem;
+      transition: all 0.2s;
+      opacity: 0;
+      animation: fadeSlideUp 0.5s ease forwards;
+    }
+    .project-tile:nth-child(1) { animation-delay: 2.4s; }
+    .project-tile:nth-child(2) { animation-delay: 2.6s; }
+    .project-tile:nth-child(3) { animation-delay: 2.8s; }
+    .project-tile:hover {
+      border-color: rgba(255,255,255,0.25);
+      background: rgba(20,20,24,0.8);
+      transform: translateY(-3px);
+    }
+    .project-icon {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: #cfcfcf;
+    }
+    .project-tile h3 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 0.6rem;
+      letter-spacing: -0.3px;
+    }
+    .project-tile p {
+      color: #b0b0b0;
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+      line-height: 1.4;
+    }
+    .tech-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.8rem;
+    }
+    .skill-tag {
+      border: 1px solid rgba(255,255,255,0.2);
+      padding: 0.2rem 0.8rem;
+      font-size: 0.7rem;
+      font-weight: 500;
+      background: rgba(0,0,0,0.35);
+    }
+
+    footer {
+      margin-top: 4rem;
+      padding: 1.8rem 0;
+      text-align: center;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      font-size: 0.8rem;
+      color: #888;
+      letter-spacing: 0.2px;
+      opacity: 0;
+      animation: fadeSlideUp 0.6s ease forwards;
+      animation-delay: 3.2s;
+    }
+
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+
+    @keyframes fadeSlideUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeScale {
+      from {
+        opacity: 0;
+        transform: scale(0.95);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    @media (max-width: 760px) {
+      .frame {
+        padding: 1.2rem;
+      }
+      .hero-text h1 {
+        font-size: 2.8rem;
+      }
+      .typewriter-line {
+        white-space: normal;
+        animation: none;
+        width: 100%;
+      }
+      .avatar-frame {
+        width: 170px;
+        height: 170px;
+        font-size: 3.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="frame">
+  <header>
+    <div class="signature">Baraa Khaled G7 <small>my portfolio</small></div>
+  </header>
+
+  <div class="hero">
+    <div class="hero-text">
+      <h1>
+        <span class="typewriter-line">G7 Project</span>
+      </h1>
+      <p>My name is Baraa, I code mainly HTML, and sometimes I code Python a little</p>
+      <div class="note">
+        <i class="fas fa-code" style="margin-right: 8px;"></i> Python is way more easier than HTML
+      </div>
+      <div class="stats-group">
+        <div class="stat-block border-light">
+          <span class="stat-number">HTML</span>
+          <span class="stat-label">i can manage</span>
+        </div>
+        <div class="stat-block border-light">
+          <span class="stat-number">Python</span>
+          <span class="stat-label">still learning</span>
+        </div>
+        <div class="stat-block border-light">
+          <span class="stat-number">CSS</span>
+          <span class="stat-label">barely</span>
+        </div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="avatar-frame border-light">
+        <i class="fas fa-laptop-code"></i>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <div class="section-label border-light" style="opacity: 0; animation: fadeSlideUp 0.5s ease forwards; animation-delay: 2.2s;">stuff i made</div>
+    <div class="projects-grid">
+      <div class="project-tile border-light">
+        <div class="project-icon"><i class="fas fa-file-code"></i></div>
+        <h3>First HTML page</h3>
+        <p>Basic page with some text and images</p>
+        <div class="tech-stack">
+          <span class="skill-tag">HTML</span>
+          <span class="skill-tag">CSS</span>
+        </div>
+      </div>
+      <div class="project-tile border-light">
+        <div class="project-icon"><i class="fas fa-list-ul"></i></div>
+        <h3>To do list</h3>
+        <p>Normal JavaScript</p>
+        <div class="tech-stack">
+          <span class="skill-tag">HTML</span>
+          <span class="skill-tag">JS</span>
+        </div>
+      </div>
+      <div class="project-tile border-light">
+        <div class="project-icon"><i class="fas fa-terminal"></i></div>
+        <h3>Python practice</h3>
+        <p>Im still learning the basics</p>
+        <div class="tech-stack">
+          <span class="skill-tag">Python</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <span>My Portfolio Baraa Khaled G7</span>
+  </footer>
+</div>
+</body>
+</html>
